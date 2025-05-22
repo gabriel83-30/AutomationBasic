@@ -1,0 +1,124 @@
+<html>
+<head>
+<title>CheckBoxTest.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+CheckBoxTest.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">Homerwork</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">By</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">JavascriptExecutor</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">WebDriver</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">WebElement</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">chrome</span><span class="s2">.</span><span class="s1">ChromeDriver</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">testng</span><span class="s2">.</span><span class="s1">Assert</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">testng</span><span class="s2">.</span><span class="s1">annotations</span><span class="s2">.</span><span class="s1">Test</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">time</span><span class="s2">.</span><span class="s1">Duration</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">CheckBoxTest </span><span class="s2">{</span>
+
+    <span class="s1">WebDriver driver</span><span class="s2">;</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">CheckBoxTest</span><span class="s2">() {</span>
+        <span class="s1">openBrowser</span><span class="s2">();</span>
+        <span class="s1">chooseMeniu</span><span class="s2">();</span>
+        <span class="s1">chooseSubMenu</span><span class="s2">();</span>
+        <span class="s1">toggleHomeFolder</span><span class="s2">();</span>
+        <span class="s1">toggleDesktopFolder</span><span class="s2">();</span>
+        <span class="s1">toggleDocumentsFolder</span><span class="s2">();</span>
+        <span class="s1">toggleDownloadsFolder</span><span class="s2">();</span>
+        <span class="s1">selectDesktop</span><span class="s2">();</span>
+        <span class="s1">selectAllCheckBoxes</span><span class="s2">();</span>
+
+
+    <span class="s2">}</span>
+
+    <span class="s3">// facem o metoda care deschide un browser</span>
+    <span class="s0">public void </span><span class="s1">openBrowser</span><span class="s2">() {</span>
+        <span class="s1">driver </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ChromeDriver</span><span class="s2">();</span>
+<span class="s3">//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">manage</span><span class="s2">().</span><span class="s1">window</span><span class="s2">().</span><span class="s1">maximize</span><span class="s2">();</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s4">&quot;https://demoqa.com/&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// facem o metoda care alege un meniu</span>
+    <span class="s0">public void </span><span class="s1">chooseMeniu</span><span class="s2">() {</span>
+        <span class="s1">WebElement elementsMenu </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s4">&quot;//h5[text()='Elements']&quot;</span><span class="s2">));</span>
+        <span class="s1">JavascriptExecutor js </span><span class="s2">= (</span><span class="s1">JavascriptExecutor</span><span class="s2">) </span><span class="s1">driver</span><span class="s2">;</span>
+        <span class="s1">js</span><span class="s2">.</span><span class="s1">executeScript</span><span class="s2">(</span><span class="s4">&quot;arguments[0].scrollIntoView(true);&quot;</span><span class="s2">, </span><span class="s1">elementsMenu</span><span class="s2">);</span>
+        <span class="s1">elementsMenu</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// facem o metoda care sa selecteze sub-meniul</span>
+    <span class="s0">public void </span><span class="s1">chooseSubMenu</span><span class="s2">() {</span>
+        <span class="s1">WebElement elementsSubMenu </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s4">&quot;//span[text()='Check Box']&quot;</span><span class="s2">));</span>
+        <span class="s1">elementsSubMenu</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// facem o metoda care sa extinda folderul &quot;Home&quot;</span>
+    <span class="s0">public void </span><span class="s1">toggleHomeFolder</span><span class="s2">() {</span>
+        <span class="s1">WebElement toggleHome </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">cssSelector</span><span class="s2">(</span><span class="s4">&quot;button[title='Toggle']&quot;</span><span class="s2">));</span>
+        <span class="s1">toggleHome</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+    <span class="s2">}</span>
+<span class="s3">//</span>
+<span class="s3">//    // facem o metoda care sa extinda folderul &quot;Desktop&quot;</span>
+        <span class="s0">public void </span><span class="s1">toggleDesktopFolder</span><span class="s2">() {</span>
+            <span class="s1">WebElement toggleDesktop </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s4">&quot;//span[text()='Desktop']/preceding::button[1]&quot;</span><span class="s2">));</span>
+            <span class="s1">toggleDesktop</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s2">}</span>
+<span class="s3">//</span>
+<span class="s3">//    // facem o metoda care sa extinda folderul &quot;Documents&quot;</span>
+    <span class="s0">public void </span><span class="s1">toggleDocumentsFolder</span><span class="s2">() {</span>
+        <span class="s1">WebElement toggleDocuments </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s4">&quot;//span[text()='Documents']/preceding::button[1]&quot;</span><span class="s2">));</span>
+        <span class="s1">toggleDocuments</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+    <span class="s2">}</span>
+<span class="s3">//</span>
+<span class="s3">//    // facem o metoda care sa extinda folderul &quot;Downloads&quot;</span>
+    <span class="s0">public void </span><span class="s1">toggleDownloadsFolder</span><span class="s2">() {</span>
+        <span class="s1">WebElement toggleDownloads </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s4">&quot;//span[text()='Downloads']/preceding::button[1]&quot;</span><span class="s2">));</span>
+        <span class="s1">toggleDownloads</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+<span class="s3">//     facem o metoda care sa selecteze folder-ul Desktop</span>
+    <span class="s0">public void </span><span class="s1">selectDesktop</span><span class="s2">() {</span>
+        <span class="s1">WebElement expandDesktop </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s4">&quot;//span[text()='Desktop']/preceding::span[@class='rct-checkbox'][1]&quot;</span><span class="s2">));</span>
+        <span class="s1">expandDesktop</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">WebElement result </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s4">&quot;result&quot;</span><span class="s2">));</span>
+        <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertTrue</span><span class="s2">(</span><span class="s1">result</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">contains</span><span class="s2">(</span><span class="s4">&quot;desktop&quot;</span><span class="s2">), </span><span class="s4">&quot;Folder-ul Desktop NU a fost selectat.&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+<span class="s3">//     facem o metoda in care Selectăm toate checkbox-urile (selectăm Home)</span>
+    <span class="s0">public void </span><span class="s1">selectAllCheckBoxes</span><span class="s2">(){</span>
+        <span class="s1">WebElement homeCheckBox </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s4">&quot;//span[@class='rct-checkbox'][1]&quot;</span><span class="s2">));</span>
+        <span class="s1">homeCheckBox</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">WebElement result </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s4">&quot;result&quot;</span><span class="s2">));</span>
+        <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertTrue</span><span class="s2">(</span><span class="s1">result</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">toLowerCase</span><span class="s2">().</span><span class="s1">contains</span><span class="s2">(</span><span class="s4">&quot;home&quot;</span><span class="s2">), </span><span class="s4">&quot;Folder-ul Home NU a fost selectat.&quot;</span><span class="s2">);</span>
+        <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertTrue</span><span class="s2">(</span><span class="s1">result</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">toLowerCase</span><span class="s2">().</span><span class="s1">contains</span><span class="s2">(</span><span class="s4">&quot;desktop&quot;</span><span class="s2">), </span><span class="s4">&quot;Folder-ul Desktop NU a fost selectat.&quot;</span><span class="s2">);</span>
+
+    <span class="s2">}</span>
+
+    <span class="s3">// Folderele au fost extinse.</span>
+    <span class="s3">//Checkbox-urile pot fi bifate.</span>
+    <span class="s3">//Se confirmă selecția în zona de output (#result).</span>
+
+
+
+
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
