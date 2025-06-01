@@ -1,17 +1,11 @@
-package Homerwork;
+package Homerwork.pomExample.tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
 
 
 //  homework -> pachet nou
@@ -25,15 +19,15 @@ public class siteTestSwagLabs {
     public void siteTestSwag() {
 
         //  Se creează o instanță de ChromeDriver, ceea ce înseamnă că se deschide automat un browser Chrome controlat de Selenium.
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://www.saucedemo.com");  // Navigam catre pegina website-ului
-        driver.manage().window().maximize();   // Facem fereastra browser-ului maximize
-        WebElement userNameField = driver.findElement(By.id("user-name"));    //completam field-ul de user name
-        userNameField.sendKeys("standard_user");
-        WebElement password = driver.findElement(By.id("password"));
-        password.sendKeys("secret_sauce"); // completam field-ul de password
-        WebElement loginButton = driver.findElement(By.id("login-button"));
-        loginButton.click();
+//        WebDriver driver = new ChromeDriver();
+//        driver.get("https://www.saucedemo.com");  // Navigam catre pegina website-ului
+//        driver.manage().window().maximize();   // Facem fereastra browser-ului maximize
+//        WebElement userNameField = driver.findElement(By.id("user-name"));    //completam field-ul de user name
+//        userNameField.sendKeys("standard_user");
+//        WebElement password = driver.findElement(By.id("password"));
+//        password.sendKeys("secret_sauce"); // completam field-ul de password
+//        WebElement loginButton = driver.findElement(By.id("login-button"));
+//        loginButton.click();
 //        WebElement selectItemFieldBackPack = driver.findElement(By.xpath("//div[text()='Sauce Labs Backpack']"));
 //        selectItemFieldBackPack.click();
 //        WebElement selectItemFieldBikeLight = driver.findElement(By.xpath("//div[text()='Sauce Labs Bike Light']"));
@@ -66,8 +60,8 @@ public class siteTestSwagLabs {
 //            Assert.assertTrue(productNames.contains(expectedProducts), "Unexpected product not found: " + expectedProduct);
 //        }
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollTo(0, 300);"); // scroll 500 pixeli
+//        JavascriptExecutor js = (JavascriptExecutor) driver;
+//        js.executeScript("window.scrollTo(0, 300);"); // scroll 500 pixeli
 //        WebElement formMeniu = driver.findElement(By.className("inventory_item_name"));
 //        js.executeScript("arguments[0].scrollIntoView(true);", formMeniu);
 
