@@ -35,48 +35,47 @@ public class WebTablePage extends BasePage {
 
     @Override
     public void isPageLoaded() {
-        Assert.assertEquals(driver.findElement(pageTitle).getText(),
+        Assert.assertEquals(elementMethods.getTextFromElement(pageTitle),
                 "Web Tables", "Page is not loaded properly");
     }
 
 
-    public void webTablePageFlow(){
+    public void webTablePageFlow() {
         getTableSize();
         clickToAddNewRecord();
         fillFormValues();
         validateThatRecords();
     }
 
-
-
     public int getTableSize() {
-        initialTableSize = driver.findElements(tableRowsList).size();
+        initialTableSize = elementMethods.getElements(tableRowsList).size();
         System.out.println("Numarul initial de randuri este " + initialTableSize);
         return initialTableSize;
     }
+
     public void clickToAddNewRecord() {
-        driver.findElement(addNewRecordBtn).click();    }
+        elementMethods.clickElement(addNewRecordBtn);
+    }
 
     // facem o metoda care sa compleze toate campurile din formular
     public void fillFormValues() {
 
-        driver.findElement(firstNameField).sendKeys(firstName);
-        driver.findElement(lastNameField).sendKeys(lastName);
-        driver.findElement(userEmailField).sendKeys(email);
-        driver.findElement(ageField).sendKeys(age);
-        driver.findElement(salaryField).sendKeys(salary);
-        driver.findElement(departmentField).sendKeys(department);
-        driver.findElement(submitButton).click();
+        elementMethods.fillElement(firstNameField, firstName);
+        elementMethods.fillElement(lastNameField, lastName);
+        elementMethods.fillElement(userEmailField, email);
+        elementMethods.fillElement(ageField, age);
+        elementMethods.fillElement(salaryField, salary);
+        elementMethods.fillElement(departmentField,department);
+        elementMethods.clickElement(submitButton);
 
     }
 
     // facem o metoda care sa valideze ce am adaugat, o intrare noua in tabel si sa verifice valorile pe care le-am dat
 
     public void validateThatRecords() {
-
-        Assert.assertTrue(driver.findElements(tableRowsList).size() > initialTableSize, "There are no new entries in the table! , Initial table size: "
-                + initialTableSize + " is the same with actual table size: " + driver.findElements(tableRowsList).size());
-        String actualTableValues = driver.findElements(tableRowsList).get(driver.findElements(tableRowsList).size() - 1).getText();
+        Assert.assertTrue(elementMethods.getElements(tableRowsList).size() > initialTableSize, "There are no new entries in the table! , Initial table size: "
+                + initialTableSize + " is the same with actual table size: " + elementMethods.getElements(tableRowsList).size());
+        String actualTableValues = elementMethods.getElements(tableRowsList).get(elementMethods.getElements(tableRowsList).size() - 1).getText();
         System.out.println("New record values are: " + actualTableValues);
         Assert.assertTrue(actualTableValues.contains(firstName), "First name value isn't correct, expected firstname: " + firstName);
         Assert.assertTrue(actualTableValues.contains(lastName), "First name value isn't correct, expected firstname: " + lastName);

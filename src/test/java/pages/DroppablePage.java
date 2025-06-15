@@ -14,30 +14,21 @@ public class DroppablePage extends BasePage{
     private By droppabbleElement = (By.xpath("//div[@id='simpleDropContainer']//div[@id='droppable']"));
 
 
-
-
-
-
-
     public DroppablePage(WebDriver driver) {
         super(driver);
     }
 
     @Override
     public void isPageLoaded() {
-        Assert.assertEquals(driver.findElement(pageTitle).getText(),
+        Assert.assertEquals(elementMethods.getTextFromElement(pageTitle),
                 "Droppable", "Page is not loaded properly");
     }
 
     public void pickAndDropElement() {
-
-
-        String initialTargetText = driver.findElement(droppabbleElement).getText();
-        Actions action = new Actions(driver);// clasa ne aujuta sa imitam click and hold ,
-        action.dragAndDrop(driver.findElement(draggableElement), driver.findElement(droppabbleElement)).release().perform();
-        Assert.assertNotEquals(driver.findElement(droppabbleElement).getText(), initialTargetText, "Initial text is the same with actual text after element dropped");
-        System.out.println("Initial text is: " + initialTargetText + " text after successfully drop: " + driver.findElement(droppabbleElement).getText());
-
+        String initialTargetText = elementMethods.getTextFromElement(droppabbleElement);
+        elementMethods.pickAndDropElemnent(draggableElement,droppabbleElement);
+        Assert.assertNotEquals(elementMethods.getTextFromElement(droppabbleElement), initialTargetText, "Initial text is the same with actual text after element dropped");
+        System.out.println("Initial text is: " + initialTargetText + " Text after successfully drop: " + elementMethods.getTextFromElement(droppabbleElement));
 
     }
 }

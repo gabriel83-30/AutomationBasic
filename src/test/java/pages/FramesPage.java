@@ -23,24 +23,21 @@ public class FramesPage extends BasePage{
 
     @Override
     public void isPageLoaded() {
-        Assert.assertEquals(driver.findElement(pageTitle).getText(),"Frames","Page is not loaded properly");
+        Assert.assertEquals(elementMethods.getTextFromElement(pageTitle),"Frames","Page is not loaded properly");
 
     }
 
-
     public void interactWithFrameOne(){
-
-        driver.switchTo().frame(driver.findElement(frameOneLocator)); // ne mutam de pe pagina principala pe tabul nou deschis
-        Assert.assertEquals(driver.findElement(frameTextValueLocator).getText(), expectedText, "This is a not displayed properly ");
-        System.out.println("Frame one is: " + driver.findElement(frameTextValueLocator).getText());
-        driver.switchTo().defaultContent(); // schimbam focusul pe pagina initiala
+        frameMethods.switchToFrame(frameOneLocator); // ne mutam de pe pagina principala pe tabul nou deschis
+        Assert.assertEquals(elementMethods.getTextFromElement(frameTextValueLocator), expectedText, "This is a not displayed properly ");
+        System.out.println("Frame one is: " + elementMethods.getTextFromElement(frameTextValueLocator));
+        frameMethods.switchToDefaultPage(); ; // schimbam focusul pe pagina initiala
     }
 
     public void interactWithFrameTwo(){
-
-        driver.switchTo().frame(driver.findElement(frameTwoLocator));// ne mutam de pe pagina principala pe tabul nou deschis
-        Assert.assertEquals(driver.findElement(frameTextValueLocator).getText(), expectedText, "This is a not displayed properly ");
-        System.out.println("Frame two is: " + driver.findElement(frameTextValueLocator).getText());
-        driver.switchTo().defaultContent();
+        frameMethods.switchToFrame(frameTwoLocator);// ne mutam de pe pagina principala pe tabul nou deschis
+        Assert.assertEquals(elementMethods.getTextFromElement(frameTextValueLocator), expectedText, "This is a not displayed properly ");
+        System.out.println("Frame two is: " + elementMethods.getTextFromElement(frameTextValueLocator));
+        frameMethods.switchToDefaultPage();
     }
 }

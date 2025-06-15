@@ -13,7 +13,6 @@ import java.time.Duration;
 
 public class AlertsTest extends BaseTest {
 
-//    WebDriver driver;
 
     @Test
     public void alertsTest() {

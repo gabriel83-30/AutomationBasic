@@ -18,10 +18,7 @@ public class WindowsPage extends BasePage {
     private By newWindowMessageButton = By.id("messageWindowButton");
 
 
-    String expectedText ="This is a sample page";
-
-
-//    private By newTabButton =
+    String expectedText = "This is a sample page";
 
     public WindowsPage(WebDriver driver) {
         super(driver);
@@ -29,45 +26,33 @@ public class WindowsPage extends BasePage {
 
     @Override
     public void isPageLoaded() {
-        Assert.assertEquals(driver.findElement(pageTitle).getText(),
+        Assert.assertEquals(elementMethods.getTextFromElement(pageTitle),
                 "Browser Windows", "Page is not loaded properly");
 
     }
 
     public void interactWithNewTab() {
-
-        driver.findElement(newTabButton).click();
-        List<String> windowsList = new ArrayList<>(driver.getWindowHandles()); //declaram o lista de ferestre
-        driver.switchTo().window(windowsList.get(1));// ne mutam pe tabul nou deschis
-        Assert.assertEquals(driver.findElement(windowsTextValidationLocator).getText(), expectedText, "This is a not displayed properly ");
-        driver.close(); // inchide fereastra, driver.quit--> inchide intreaga instanta
-        driver.switchTo().window(windowsList.get(0));
-
+        elementMethods.clickElement(newTabButton);
+        windowsMethods.switchToWindow(1);
+        Assert.assertEquals(elementMethods.getTextFromElement(windowsTextValidationLocator), expectedText, "This is a not displayed properly ");
+        windowsMethods.closeWindowOrTab(); // inchide fereastra, driver.quit--> inchide intreaga instanta
+        windowsMethods.switchToWindow(0);
     }
 
     public void interactWithNewWindows() {
-        driver.findElement(newWindowsButton).click();
-        List<String> windowsList = new ArrayList<>(driver.getWindowHandles()); //declaram o lista de ferestre
-        driver.switchTo().window(windowsList.get(1));
-        Assert.assertEquals(driver.findElement(newWindowsButton).getText(), expectedText, "This is a not displayed properly ");
-        driver.close(); // inchide fereastra, driver.quit--> inchide intreaga instanta
-        driver.switchTo().window(windowsList.get(0));
-
+        elementMethods.clickElement(newWindowsButton);
+        windowsMethods.switchToWindow(1);
+        Assert.assertEquals(elementMethods.getTextFromElement(windowsTextValidationLocator), expectedText, "This is a not displayed properly ");
+        windowsMethods.closeWindowOrTab(); // inchide fereastra, driver.quit--> inchide intreaga instanta
+        windowsMethods.switchToWindow(0);
     }
 
     public void interactWithNewWindowsMessage() {
-
-        driver.findElement(newWindowMessageButton).click();
-        List<String> windowsList = new ArrayList<>(driver.getWindowHandles()); //declaram o lista de ferestre
-        if (windowsList.size() > 1) {
-            System.out.println(" A new window is successfully opened");
-        } else {
-            System.out.println(" New window can't opened");
-        }
-        driver.switchTo().window(windowsList.get(1));
-        driver.close();
-        driver.switchTo().window(windowsList.get(0));
+        elementMethods.clickElement(newWindowMessageButton);
+        windowsMethods.newMessageWindow();
+        windowsMethods.switchToWindow(1);
+        windowsMethods.closeWindowOrTab();
+        windowsMethods.switchToWindow(0);
     }
-
 
 }
