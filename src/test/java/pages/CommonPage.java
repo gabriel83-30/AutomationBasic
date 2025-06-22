@@ -5,6 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import static extentUtility.ExtentHelper.logInfo;
+import static extentUtility.ReportEventType.INFO_STEP;
+import static extentUtility.ReportEventType.PASS_STEP;
+
 public class CommonPage extends BasePage {
 
     // locatori specifici paginii;
@@ -17,11 +21,13 @@ public class CommonPage extends BasePage {
 
     @Override
     public void isPageLoaded() {
+        logInfo(PASS_STEP, "Validate that CommonPage is loaded properly");
         Assert.assertEquals(driver.getTitle(), "DEMOQA","Page is not loaded properly");
 
     }
 
     public  void goToDesiredSubMenu(String subMenuValue){
+        logInfo(INFO_STEP, "User choose desire SubMenu" + subMenuValue);
         elementMethods.scrollPageDown("500");
         elementMethods.chooseElementFromListByText(subMenuListLocator, subMenuValue);
 

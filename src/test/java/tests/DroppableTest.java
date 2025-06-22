@@ -1,27 +1,25 @@
 package tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CommonPage;
 import pages.DroppablePage;
 import pages.HomePage;
 
-public class DrappobleTest extends BaseTest {
+import static constants.MenuConstants.INTERACTIONS_MENU;
+import static constants.SubMenuConstants.DROPPABLE_SUBMENU;
+
+public class DroppableTest extends BaseTest {
 
 
     @Test
-    public void DrappobleTest() {
+    public void DroppableTest() {
 
         HomePage homePage = new HomePage(driver);
         homePage.isPageLoaded();
-        homePage.goToDesiredMenu("Interactions");
+        homePage.goToDesiredMenu(INTERACTIONS_MENU);
         CommonPage commonPage = new CommonPage(driver);
         commonPage.isPageLoaded();
-        commonPage.goToDesiredSubMenu("Droppable");
+        commonPage.goToDesiredSubMenu(DROPPABLE_SUBMENU);
         DroppablePage droppablePage = new DroppablePage(driver);
         droppablePage.isPageLoaded();
         droppablePage.pickAndDropElement();

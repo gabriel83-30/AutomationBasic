@@ -2,8 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
 public class DroppablePage extends BasePage{
@@ -26,7 +24,7 @@ public class DroppablePage extends BasePage{
 
     public void pickAndDropElement() {
         String initialTargetText = elementMethods.getTextFromElement(droppabbleElement);
-        elementMethods.pickAndDropElemnent(draggableElement,droppabbleElement);
+        elementMethods.pickAndDropElement(draggableElement,droppabbleElement);
         Assert.assertNotEquals(elementMethods.getTextFromElement(droppabbleElement), initialTargetText, "Initial text is the same with actual text after element dropped");
         System.out.println("Initial text is: " + initialTargetText + " Text after successfully drop: " + elementMethods.getTextFromElement(droppabbleElement));
 

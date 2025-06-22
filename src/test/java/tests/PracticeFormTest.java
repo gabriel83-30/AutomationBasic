@@ -1,15 +1,16 @@
 package tests;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 import pages.CommonPage;
 import pages.HomePage;
 import pages.PracticeFormPage;
+import propertyUtility.PropertyUtility;
 
-import java.io.File;
-import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
+
+import static constants.MenuConstants.FORMS_MENU;
+import static constants.SubMenuConstants.PRACTICE_FORM_SUBMENU;
 
 public class PracticeFormTest extends BaseTest {
 
@@ -21,15 +22,20 @@ public class PracticeFormTest extends BaseTest {
 
         HomePage homePage = new HomePage(driver);
         homePage.isPageLoaded();
-        homePage.goToDesiredMenu("Forms");
+        homePage.goToDesiredMenu(FORMS_MENU);
         CommonPage commonPage = new CommonPage(driver);
         commonPage.isPageLoaded();
-        commonPage.goToDesiredSubMenu("Practice Form");
+        commonPage.goToDesiredSubMenu(PRACTICE_FORM_SUBMENU);
         PracticeFormPage practiceFormPage = new PracticeFormPage(driver);
+        propertyUtility = new PropertyUtility("PracticeFormTest");
+        Map<String, Object> PracticeFormData = propertyUtility.getAllProperties();
         practiceFormPage.isPageLoaded();
-        practiceFormPage.fillEntireForm();
+        practiceFormPage.fillEntireForm(PracticeFormData);
+        practiceFormPage.validateThatExpectedValuesEqualActualValues(PracticeFormData);
 
 
+
+// proiectul , implementarea BRUTA( MINIM NOTA 7)
 //        driver = new ChromeDriver();
 //        // Navigam catre pegina website-ului
 //        driver.get("https://demoqa.com/");
@@ -38,7 +44,7 @@ public class PracticeFormTest extends BaseTest {
         // Identificam meniul dorit si facem click pe el
 //        WebElement formMeniu = driver.findElement(By.xpath("//h5[text()='Forms']"));
 //        // Facem scroll pana in dreptul elementului pe care vrem sa-l actionam
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+//        JavascriptExecutor js = (JavascriptExecutor) driver;
 //        js.executeScript("arguments[0].scrollIntoView(true);", formMeniu);
 //        // Acum facem click pe meniul de mai sus
 //        formMeniu.click();
@@ -131,7 +137,7 @@ public class PracticeFormTest extends BaseTest {
 //        musicHobbyElement.click();
 //        js.executeScript("window.scrollTo(0, 500);"); // facem scrool
 
-        // incarcare poza
+//         incarcare poza
 //        WebElement uploadFileElement = driver.findElement(By.id("uploadPicture"));
 //        String pictureFilePath = "src/test/resources/TestImage.png";
 //        File file = new File(pictureFilePath);

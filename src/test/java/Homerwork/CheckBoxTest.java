@@ -1,4 +1,4 @@
-package Homerwork.pomExample;
+package Homerwork;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;

@@ -12,6 +12,9 @@ import pages.WindowsPage;
 import java.util.ArrayList;
 import java.util.List;
 
+import static constants.MenuConstants.ALERTS_FRAMES_WINDOWS_MENU;
+import static constants.SubMenuConstants.WINDOWS_SUBMENU;
+
 public class WindowsTest extends BaseTest {
 
 //    WebDriver driver;
@@ -21,10 +24,10 @@ public class WindowsTest extends BaseTest {
 
         HomePage homePage = new HomePage(driver);
         homePage.isPageLoaded();
-        homePage.goToDesiredMenu("Alerts, Frame & Windows");
+        homePage.goToDesiredMenu( ALERTS_FRAMES_WINDOWS_MENU);
         CommonPage commonPage = new CommonPage(driver);
         commonPage.isPageLoaded();
-        commonPage.goToDesiredSubMenu("Browser Windows");
+        commonPage.goToDesiredSubMenu(WINDOWS_SUBMENU);
         WindowsPage windowsPage = new WindowsPage(driver);
         windowsPage.isPageLoaded();
         windowsPage.interactWithNewTab();
